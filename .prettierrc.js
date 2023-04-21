@@ -1,8 +1,6 @@
-module.exports = {
-    bracketSpacing: true,
-    singleQuote: true,
-    tabWidth: 2,
-    useTabs: false,
-    trailingComa: "none",
-    semi: false
-};
+export const bracketSpacing = true;
+export const singleQuote = true;
+export const tabWidth = 2;
+export const useTabs = false;
+export const trailingComa = "none";
+export const semi = false;
