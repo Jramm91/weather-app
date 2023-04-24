@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { View, ActivityIndicator, StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import Tabs from './src/components/Tabs'
 import { useGetWeather } from './src/hooks/useGetWeather'
+import ErrorItem from './src/components/ErrorItem'
 
 const App = () => {
   const [loading, error, weather] = useGetWeather()
   // console.log(loading, error, weather)
 
-  if (weather && weather.list) {
+  if (weather && weather.list && !loading) {
     return (
       <NavigationContainer>
         <Tabs weather={weather} />
@@ -17,7 +18,11 @@ const App = () => {
   }
   return (
     <View style={styles.container}>
-      <ActivityIndicator size={'large'} color={'blue'} />
+      {error ? (
+        <ErrorItem />        
+      ) : (
+        <ActivityIndicator size={'large'} color={'blue'} />
+      )}
     </View>
   )
 }
